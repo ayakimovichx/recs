@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<h2>Latest views</h2>
+{% endblock %}
+
+{% block content %}
+{% if latest_view_list %}
+<div class="row">
+    {% for view in latest_view_list %}
+    <div class="col-xs-6 col-lg-4">
+        <h4><a href="{% url 'productviews:view_detail' view.id %}">
+        {{ view.product.name }}
+        </a></h4>
+        <h6>viewed {{ view.rating }} time(s) by {{ view.user_name }}</h6>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>No views are available.</p>
+{% endif %}
+{% endblock %}

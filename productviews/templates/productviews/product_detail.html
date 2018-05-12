@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}
+<h2>{{ product.name }}</h2>
+<h5>{{ product.review_set.count }} views ({{ product.average_rating | floatformat }} average rating)</h5>
+{% endblock %}
+
+{% block content %}
+<h3>Recent views</h3>
+
+{% if product.review_set.all %}
+<div class="row">
+    {% for view in product.review_set.all %}
+    <div class="col-xs-6 col-lg-4">
+        <h6>Viewed {{ view.rating }} time(s) by {{ view.user_name }}</h6>
+        <h5><a href="{% url 'productviews:view_detail' view.id %}">
+        Read more
+        </a></h5>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>No views for this product yet</p>
+{% endif %}
+{% endblock %}
