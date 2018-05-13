@@ -1,0 +1,2 @@
+temp as of 2018-05-13:
+views file with only 10,000 views loader into DB

@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render
-
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from .models import View, Product
 
 def view_list(request):
@@ -24,3 +25,7 @@ def user_view_list(request, username=None):
     latest_view_list = View.objects.filter(user_name=username).order_by('-pub_date')
     context = {'latest_view_list':latest_view_list, 'username':username}
     return render(request, 'productviews/user_view_list.html', context)
+	
+@login_required
+def user_recommendation_list(request):
+    return render(request, 'productviews/user_recommendation_list.html', {'username': request.user.username})
