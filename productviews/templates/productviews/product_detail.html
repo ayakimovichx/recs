@@ -3,20 +3,19 @@
 
 {% block title %}
 <h2>{{ product.name }}</h2>
-<h5>{{ product.review_set.count }} views ({{ product.average_rating | floatformat }} average rating)</h5>
+<h5>{{ product.view_set.count }} views</h5>
 {% endblock %}
 
 {% block content %}
 <h3>Recent views</h3>
 
-{% if product.review_set.all %}
+{% if product.view_set.all %}
 <div class="row">
-    {% for view in product.review_set.all %}
+    {% for view in product.view_set.all %}
     <div class="col-xs-6 col-lg-4">
-        <h6>Viewed {{ view.rating }} time(s) by {{ view.user_name }}</h6>
-        <h5><a href="{% url 'productviews:view_detail' view.id %}">
-        Read more
-        </a></h5>
+        <h6>Viewed {{ view.rating }} time(s) by <a href="{% url 'productviews:user_view_list' view.user_name %}"><b>{{ view.user_name }}</b></a> </h6>
+		<h6>at {{view.pub_date}}</h6>
+		<h6>id: <i>{{view.id}}</i></h6>
     </div>
     {% endfor %}
 </div>

@@ -12,8 +12,7 @@
         <h4><a href="{% url 'productviews:product_detail' product.id %}">
         {{ product.name }}
         </a></h4>
-        <h5>{{ product.review_set.count }} views</h5>
-        <h5>{{ product.average_rating | floatformat }} average rating</h5>
+        <h5>{{ product.view_set.count }} views</h5>
     </div>
     {% endfor %}
 </div>

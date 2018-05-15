@@ -12,5 +12,7 @@ urlpatterns = [
     url(r'^view/user/(?P<username>\w+)/$', views.user_view_list, name='user_view_list'),
     url(r'^view/user/$', views.user_view_list, name='user_view_list'),
     # ex: /recommendation - get recommendations for the logged user
-    url(r'^recommendation/$', views.user_recommendation_list, name='user_recommendation_list'),
+    # url(r'^recommendation/$', views.user_recommendation_list, name='user_recommendation_list'),
+    url(r'^recommendation/user/(?P<username>\w+)/$', views.user_recommendation_list, name='user_recommendation_list'),
+    url(r'^recommendation/user/$', views.user_recommendation_list, name='user_recommendation_list'),
 ]

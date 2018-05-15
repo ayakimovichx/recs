@@ -9,9 +9,9 @@
 <div class="row">
     {% for view in latest_view_list %}
     <div class="col-xs-6 col-lg-4">
-        <h4> {{view.id}} for {{ view.product.name }}
-        </h4>
-        <h6>viewed {{ view.rating }} time(s) by {{ view.user_name }}</h6>
+        <h4>{{ view.product.name }}        </h4>
+        <h6>Viewed: {{ view.rating }} time(s) by <a href="{% url 'productviews:user_view_list' view.user_name %}">{{ view.user_name }}</a></h6>
+		<h6>at {{ view.pub_date }}</h6>
     </div>
     {% endfor %}
 </div>
